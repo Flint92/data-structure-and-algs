@@ -13,20 +13,7 @@ func main() {
 	fmt.Println(result)
 }
 
-// DifferenceArray 差值数组
-/*
-
-- 差值数组：每个位置的值是原数组当前位置的值与前一个位置的值的差值，常用于对于某个区间内的所有值进行加减操作
-- 以下是一个具体的例子：
-
-| 下标 		| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 原数组 	| 8 | 4 | 6 | 7 | 9 | 3 | 1 | 5 |
-| 差分数组 	| 8 | -4| 2 | 1 | 2 | -6| -2| 4 |
-
-- 可以看到 nums[0] = d[0], nums[3]=d[0]+d[1}+d[2]+d[3]
-- 对区间 [a,b] 每个元素加减 ，不需要一个个操作，只需要在两端修改即可
-
-*/
+// DifferenceArray https://zhuanlan.zhihu.com/p/635853214
 type DifferenceArray struct {
 	nums []int // 原数组
 	diff []int // 差分数组
