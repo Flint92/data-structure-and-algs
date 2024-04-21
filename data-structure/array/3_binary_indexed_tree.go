@@ -77,7 +77,7 @@ func add(i uint, val int, c []int) {
 	}
 }
 
-// 二进制表示中最右边一个1后面的0的个数
+// 非负整数在二进制下最低位1以及后面的0构成的数值
 func lowBit(n uint) uint {
 	return n & (-n)
 }
