@@ -1,17 +1,8 @@
-package main
+package array
 
 import (
 	"errors"
-	"fmt"
 )
-
-func main() {
-	nums := []int{8, 4, 6, 7, 9, 3, 1, 5}
-	da := MakeDifferenceArray(nums)
-	_, _ = da.Increment(3, 5, 4)
-	result := da.Result()
-	fmt.Println(result)
-}
 
 // DifferenceArray https://zhuanlan.zhihu.com/p/635853214
 type DifferenceArray struct {

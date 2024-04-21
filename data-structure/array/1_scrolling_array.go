@@ -1,14 +1,6 @@
-package main
+package array
 
-import "fmt"
-
-func main() {
-	for i := 0; i < 10; i++ {
-		fmt.Println("fibonacci(", i, ") value is:", fibonacci(uint(i)))
-	}
-}
-
-func fibonacci(n uint) uint {
+func Fibonacci(n uint) uint {
 	if n == 0 || n == 1 {
 		return 1
 	}
