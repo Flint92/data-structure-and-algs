@@ -4,6 +4,15 @@ import (
 	"unsafe"
 )
 
+// XORList
+// head                  													   tail
+//
+//	↓                     														↓
+//
+// A|add(B) -> B|addr(A)^addr(C) -> C|addr(B)^addr(D) -> D|addr(C)^addr(E) -> E|addr(D)
+//
+// 处于节点B，想求节点C的地址, addr(A)^(link(B))==addr(A)^(addr(A)^addr(C))=0^addr(C)=addr(C)
+// 处于节点B，想求节点A的地址, addr(C)^(link(B))==addr(C)^(addr(A)^addr(C))=0^addr(A)=addr(A)
 type XORList struct {
 	head *XORListNode
 	tail *XORListNode
