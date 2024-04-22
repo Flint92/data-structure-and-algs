@@ -43,16 +43,29 @@ func (bst *BST) Print() {
 		fmt.Println("Empty Tree")
 		return
 	}
-	inorderTraversal(bst.root)
+	levelTraversal(bst.root)
 }
 
-func inorderTraversal(node *BSTNode) {
+func levelTraversal(node *BSTNode) {
 	if node == nil {
 		return
 	}
-	inorderTraversal(node.left)
-	fmt.Println(node.val)
-	inorderTraversal(node.right)
+	queue := make([]*BSTNode, 0, 2)
+	queue = append(queue, node)
+
+	for len(queue) > 0 {
+		peek := queue[0]
+		queue = queue[1:]
+
+		fmt.Print(peek.val, " ")
+		if peek.left != nil {
+			queue = append(queue, peek.left)
+		}
+		if peek.right != nil {
+			queue = append(queue, peek.right)
+		}
+	}
+
 }
 
 // 查找节点node的前驱节点
@@ -69,13 +82,13 @@ func preNode(node *BSTNode) *BSTNode {
 // 查找节点node的后继节点
 // 后继节点：对一棵二叉树进行中序遍历，遍历后的结果中，当前节点的后一个节点为该节点的后继节点
 // 查找node节点的右子树的最小节点即可
-func postNode(node *BSTNode) *BSTNode {
-	rightSmallest := node.right
-	for rightSmallest != nil && rightSmallest.left != nil {
-		rightSmallest = rightSmallest.left
-	}
-	return rightSmallest
-}
+//func postNode(node *BSTNode) *BSTNode {
+//	rightSmallest := node.right
+//	for rightSmallest != nil && rightSmallest.left != nil {
+//		rightSmallest = rightSmallest.left
+//	}
+//	return rightSmallest
+//}
 
 func del(node *BSTNode, val int) *BSTNode {
 	if node == nil {
