@@ -73,7 +73,6 @@ func (list *XORList) Remove(val int) bool {
 				if prev != nil { // always true
 					list.tail.np = xor(curr, prev.np)
 				}
-
 			} else {
 				next = xor(prev, curr.np)
 				if prev != nil { // always true
@@ -81,6 +80,7 @@ func (list *XORList) Remove(val int) bool {
 				}
 				next.np = xor(prev, xor(curr, next.np))
 			}
+			curr.np = nil // help gc
 			return true
 		}
 		next = xor(prev, curr.np)
