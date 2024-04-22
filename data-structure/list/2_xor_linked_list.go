@@ -96,5 +96,6 @@ func newNode(data int) *XORListNode {
 }
 
 func xor(prev, next *XORListNode) *XORListNode {
+	//goland:noinspection GoVetUnsafePointer
 	return (*XORListNode)(unsafe.Pointer(uintptr(unsafe.Pointer(prev)) ^ uintptr(unsafe.Pointer(next))))
 }
