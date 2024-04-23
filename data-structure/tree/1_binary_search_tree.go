@@ -32,7 +32,7 @@ func (bst *BST) Insert(val int) bool {
 func (bst *BST) Delete(val int) bool {
 	exists := bst.Search(val)
 	if exists {
-		del(bst.root, val)
+		bst.root = del(bst.root, val)
 		return true
 	}
 	return false
