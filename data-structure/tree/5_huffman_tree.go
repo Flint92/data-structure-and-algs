@@ -46,7 +46,7 @@ func NewHuffmanTree(freqs map[string]float64) *HuffmanTree {
 }
 
 func (hTree *HuffmanTree) Encode(val string) string {
-	encodeMap := hTree.toEncodeMap()
+	encodeMap := hTree.toEncodedMap()
 	encodeStrs := make([]string, 0, len(val))
 	for _, ch := range val {
 		encodeStrs = append(encodeStrs, encodeMap[string(ch)])
@@ -83,13 +83,13 @@ func (hTree *HuffmanTree) Decode(val string) (string, error) {
 	return strings.Join(results, ""), nil
 }
 
-func (hTree *HuffmanTree) toEncodeMap() map[string]string {
+func (hTree *HuffmanTree) toEncodedMap() map[string]string {
 	encodeMap := make(map[string]string)
-	dfsToBuildEncodeMap(hTree.root, "", encodeMap)
+	dfsToBuildEncodedMap(hTree.root, "", encodeMap)
 	return encodeMap
 }
 
-func dfsToBuildEncodeMap(node *HuffmanTreeNode, bitStr string, encodeMap map[string]string) {
+func dfsToBuildEncodedMap(node *HuffmanTreeNode, bitStr string, encodeMap map[string]string) {
 	if node == nil {
 		return
 	}
@@ -99,8 +99,8 @@ func dfsToBuildEncodeMap(node *HuffmanTreeNode, bitStr string, encodeMap map[str
 			encodeMap[node.val] = bitStr
 		}
 	} else {
-		dfsToBuildEncodeMap(node.left, bitStr+"0", encodeMap)
-		dfsToBuildEncodeMap(node.right, bitStr+"1", encodeMap)
+		dfsToBuildEncodedMap(node.left, bitStr+"0", encodeMap)
+		dfsToBuildEncodedMap(node.right, bitStr+"1", encodeMap)
 	}
 }
 
