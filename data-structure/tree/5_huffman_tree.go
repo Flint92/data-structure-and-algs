@@ -25,6 +25,7 @@ func NewHuffmanTree(freqs map[string]float64) *HuffmanTree {
 	}
 
 	for len(nodes) > 1 {
+		// 这里可以使用最小堆进行优化
 		sortByWeight(nodes)
 
 		first := nodes[0]
