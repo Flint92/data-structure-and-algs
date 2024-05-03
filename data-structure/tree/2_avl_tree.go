@@ -167,10 +167,3 @@ func searchAVLTreeNode(node *AVLTreeNode, val int) bool {
 	}
 
 }
-
-func maxInt(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
