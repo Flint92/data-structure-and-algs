@@ -15,3 +15,12 @@ func minInt(a, b int) int {
 	}
 	return b
 }
+
+func contains[T comparable](s []T, value T) bool {
+	for _, item := range s {
+		if item == value {
+			return true
+		}
+	}
+	return false
+}

@@ -19,6 +19,9 @@ func TestTrie(t *testing.T) {
 	require.Equal(t, true, trie.StartWith("hello"))
 	require.Equal(t, true, trie.Search("hello, world"))
 
-	require.Equal(t, []rune{'e', 'i'}, trie.Candidates("h"))
+	candidates := trie.Candidates("h")
+	require.Equal(t, 2, len(candidates))
+	require.Equal(t, true, contains(candidates, 'i'))
+	require.Equal(t, true, contains(candidates, 'e'))
 
 }
