@@ -1,5 +1,7 @@
 package tree
 
+import "util"
+
 // AVLTree 任何节点的左子树和右子树的高度差不能超过1
 type AVLTree struct {
 	root *AVLTreeNode
@@ -143,7 +145,7 @@ func balanceRL(node *AVLTreeNode) *AVLTreeNode {
 }
 
 func resetHeight(node *AVLTreeNode) {
-	node.height = maxInt(getNodeHeight(node.left), getNodeHeight(node.right)) + 1
+	node.height = util.MaxInt(getNodeHeight(node.left), getNodeHeight(node.right)) + 1
 }
 
 func getNodeHeight(node *AVLTreeNode) int {

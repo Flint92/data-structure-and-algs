@@ -3,6 +3,7 @@ package tree
 import (
 	"github.com/stretchr/testify/require"
 	"testing"
+	"util"
 )
 
 func TestTrie(t *testing.T) {
@@ -21,7 +22,7 @@ func TestTrie(t *testing.T) {
 
 	candidates := trie.Candidates("h")
 	require.Equal(t, 2, len(candidates))
-	require.Equal(t, true, contains(candidates, 'i'))
-	require.Equal(t, true, contains(candidates, 'e'))
+	require.Equal(t, true, util.Contains(candidates, 'i'))
+	require.Equal(t, true, util.Contains(candidates, 'e'))
 
 }

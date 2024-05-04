@@ -1,0 +1,10 @@
+go 1.22.1
+
+use (
+	./data-structure/array
+	./data-structure/graph
+	./data-structure/heap
+	./data-structure/list
+	./data-structure/tree
+	./util
+)
