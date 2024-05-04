@@ -52,10 +52,11 @@ func (mh *MinHeap) siftUp(val int) {
 
 	for s > 0 {
 		parent := (s - 1) >> 1
-		if val > mh.data[parent] {
+		parentVal := mh.data[parent]
+		if val > parentVal {
 			break
 		}
-		mh.data[s] = mh.data[parent]
+		mh.data[s] = parentVal
 		s = parent
 	}
 
