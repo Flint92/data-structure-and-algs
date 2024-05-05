@@ -5,7 +5,7 @@ use (
 	./algs/graph/dijkstra
 	./algs/graph/kruskal
 	./algs/graph/prim
-	./algs/sort/bubble
+	./algs/sort/bubble-sort
 	./algs/sort/select-sort
 	./data-structure/array
 	./data-structure/graph

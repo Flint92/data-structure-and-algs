@@ -1,4 +1,4 @@
-package bubble
+package bubble_sort
 
 import (
 	"github.com/stretchr/testify/require"
