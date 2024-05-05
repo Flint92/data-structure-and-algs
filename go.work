@@ -10,6 +10,7 @@ use (
 	./algs/sort/merge-sort
 	./algs/sort/quick-sort
 	./algs/sort/select-sort
+	./algs/sort/shell-sort
 	./data-structure/array
 	./data-structure/graph
 	./data-structure/heap
