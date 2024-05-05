@@ -5,6 +5,7 @@ use (
 	./algs/graph/dijkstra
 	./algs/graph/kruskal
 	./algs/graph/prim
+	./algs/search/binary-search
 	./algs/sort/bubble-sort
 	./algs/sort/insert-sort
 	./algs/sort/merge-sort
