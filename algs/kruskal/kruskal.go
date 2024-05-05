@@ -5,25 +5,21 @@ import (
 	"sort"
 )
 
-type MST struct {
-	edges []*EdgeSetItem
-}
-
-type EdgeSetItem struct {
+type Edge struct {
 	src    string
 	dst    string
 	weight float64
 }
 
-func KruskalMST(g *graph.Graph) *MST {
+func MST(g *graph.Graph) []*Edge {
 	edgeSetArray := graphToEdgeSetArray(g)
 	sets := graphToSet(g)
 
 	sortByWeight(edgeSetArray)
 
-	var items []*EdgeSetItem
+	var edges []*Edge
 	for len(edgeSetArray) > 0 {
-		if setAllConnected(sets) {
+		if allConnected(sets) {
 			break
 		}
 
@@ -31,15 +27,15 @@ func KruskalMST(g *graph.Graph) *MST {
 		edgeSetArray = edgeSetArray[1:]
 
 		if sets[edgeSet.src] != sets[edgeSet.dst] {
-			items = append(items, edgeSet)
+			edges = append(edges, edgeSet)
 			union(edgeSet.src, edgeSet.dst, sets)
 		}
 	}
 
-	return &MST{edges: items}
+	return edges
 }
 
-func setAllConnected(sets map[string]string) bool {
+func allConnected(sets map[string]string) bool {
 	var firstValue string
 	first := true
 
@@ -84,8 +80,8 @@ func graphToSet(g *graph.Graph) map[string]string {
 	return sets
 }
 
-func graphToEdgeSetArray(g *graph.Graph) []*EdgeSetItem {
-	var edgeSetArray []*EdgeSetItem
+func graphToEdgeSetArray(g *graph.Graph) []*Edge {
+	var edgeSetArray []*Edge
 
 	visited := make(map[string]bool)
 	for _, vertex := range g.Vertices() {
@@ -94,7 +90,7 @@ func graphToEdgeSetArray(g *graph.Graph) []*EdgeSetItem {
 		if ok {
 			for dstVertex, weight := range dstVertices {
 				if !visited[dstVertex] {
-					edgeSetArray = append(edgeSetArray, &EdgeSetItem{src: vertex, dst: dstVertex, weight: weight})
+					edgeSetArray = append(edgeSetArray, &Edge{src: vertex, dst: dstVertex, weight: weight})
 				}
 			}
 		}
@@ -103,7 +99,7 @@ func graphToEdgeSetArray(g *graph.Graph) []*EdgeSetItem {
 	return edgeSetArray
 }
 
-func sortByWeight(items []*EdgeSetItem) {
+func sortByWeight(items []*Edge) {
 	sort.Slice(items, func(i, j int) bool {
 		return items[i].weight < items[j].weight
 	})

@@ -19,12 +19,11 @@ func TestKruskalMST(t *testing.T) {
 	g.AddEdgeUndirected("D", "F", 2)
 	g.AddEdgeUndirected("E", "F", 6)
 
-	mst := KruskalMST(g)
-	edges := mst.edges
+	edges := MST(g)
 	require.Equal(t, 5, len(edges))
-	require.Equal(t, &EdgeSetItem{src: "A", dst: "C", weight: 1.0}, edges[0])
-	require.Equal(t, &EdgeSetItem{src: "D", dst: "F", weight: 2.0}, edges[1])
-	require.Equal(t, &EdgeSetItem{src: "B", dst: "E", weight: 3.0}, edges[2])
-	require.Equal(t, &EdgeSetItem{src: "C", dst: "F", weight: 4.0}, edges[3])
-	require.Equal(t, &EdgeSetItem{src: "B", dst: "C", weight: 5.0}, edges[4])
+	require.Equal(t, &Edge{src: "A", dst: "C", weight: 1.0}, edges[0])
+	require.Equal(t, &Edge{src: "D", dst: "F", weight: 2.0}, edges[1])
+	require.Equal(t, &Edge{src: "B", dst: "E", weight: 3.0}, edges[2])
+	require.Equal(t, &Edge{src: "C", dst: "F", weight: 4.0}, edges[3])
+	require.Equal(t, &Edge{src: "B", dst: "C", weight: 5.0}, edges[4])
 }
