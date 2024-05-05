@@ -1,9 +1,10 @@
 go 1.22.1
 
 use (
-	./algs/bellman-ford
-	./algs/dijkstra
-	./algs/kruskal
+	./algs/graph/bellman-ford
+	./algs/graph/dijkstra
+	./algs/graph/kruskal
+	./algs/graph/prim
 	./data-structure/array
 	./data-structure/graph
 	./data-structure/heap
