@@ -13,7 +13,7 @@ type Edge struct {
 
 func MST(g *graph.Graph) []*Edge {
 	edgeSetArray := graphToEdgeSetArray(g)
-	sets := graphToSet(g)
+	sets := mstSet(g)
 
 	sortByWeight(edgeSetArray)
 
@@ -72,7 +72,7 @@ func union(src, dst string, sets map[string]string) {
 	}
 }
 
-func graphToSet(g *graph.Graph) map[string]string {
+func mstSet(g *graph.Graph) map[string]string {
 	sets := make(map[string]string)
 	for _, vertex := range g.Vertices() {
 		sets[vertex] = vertex
