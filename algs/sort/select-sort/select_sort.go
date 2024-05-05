@@ -1,7 +1,7 @@
 package select_sort
 
-// Sort 选择排序是不稳定排序
-func Sort(nums []int) {
+// SelectSort 选择排序是不稳定排序
+func SelectSort(nums []int) {
 	for i := 0; i < len(nums); i++ {
 		minIdx := i
 		for j := i + 1; j < len(nums); j++ {

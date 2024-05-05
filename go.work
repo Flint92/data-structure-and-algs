@@ -6,6 +6,7 @@ use (
 	./algs/graph/kruskal
 	./algs/graph/prim
 	./algs/sort/bubble-sort
+	./algs/sort/insert-sort
 	./algs/sort/select-sort
 	./data-structure/array
 	./data-structure/graph
