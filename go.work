@@ -7,6 +7,7 @@ use (
 	./algs/graph/prim
 	./algs/sort/bubble-sort
 	./algs/sort/insert-sort
+	./algs/sort/merge-sort
 	./algs/sort/quick-sort
 	./algs/sort/select-sort
 	./data-structure/array
