@@ -1,7 +1,6 @@
 package graph
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"util"
@@ -37,9 +36,11 @@ func TestGraph_DFSFrom(t *testing.T) {
 	g.AddEdgeDirected("B", "C", 1)
 	g.AddEdgeDirected("E", "F", 1)
 
+	var path []string
 	g.DFSFrom("A", func(v string) {
-		fmt.Println(v)
+		path = append(path, v)
 	})
+	t.Log("dfs:", path)
 }
 
 func TestGraph_BFSFrom(t *testing.T) {
@@ -52,7 +53,9 @@ func TestGraph_BFSFrom(t *testing.T) {
 	g.AddEdgeDirected("B", "C", 1)
 	g.AddEdgeDirected("E", "F", 1)
 
+	var path []string
 	g.BFSFrom("A", func(v string) {
-		fmt.Println(v)
+		path = append(path, v)
 	})
+	t.Log("bfs:", path)
 }
