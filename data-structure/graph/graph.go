@@ -4,7 +4,7 @@ import (
 	"util"
 )
 
-type Operation func(string string)
+type Operation func(vertex string)
 
 type Graph struct {
 	vertices []string
