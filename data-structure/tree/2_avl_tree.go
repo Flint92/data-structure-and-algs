@@ -40,6 +40,94 @@ func (avlTree *AVLTree) Delete(val int) bool {
 	return false
 }
 
+// PreOrderTraversal Morris实现前序遍历
+// https://wansuanfa.com/index.php/1336
+func (avlTree *AVLTree) PreOrderTraversal() []int {
+	preList := make([]int, 0)
+	cur := avlTree.root
+	for cur != nil {
+		if cur.left == nil {
+			preList = append(preList, cur.val)
+			cur = cur.right
+		} else {
+			pre := cur.left
+			for pre.right != nil && pre.right != cur {
+				pre = pre.right
+			}
+			if pre.right == nil {
+				preList = append(preList, cur.val) // 第一次访问根节点
+				pre.right = cur
+				cur = cur.left
+			} else {
+				pre.right = nil // 访问左子树后第二次访问根节点，这时候需要将树还原
+				cur = cur.right
+			}
+		}
+	}
+	return preList
+}
+
+// InOrderTraversal Morris实现中序遍历
+func (avlTree *AVLTree) InOrderTraversal() []int {
+	inList := make([]int, 0)
+	cur := avlTree.root
+	for cur != nil {
+		if cur.left == nil {
+			inList = append(inList, cur.val)
+			cur = cur.right
+		} else {
+			pre := cur.left
+			for pre.right != nil && pre.right != cur {
+				pre = pre.right
+			}
+			if pre.right == nil {
+				pre.right = cur
+				cur = cur.left
+			} else {
+				inList = append(inList, cur.val)
+				pre.right = nil
+				cur = cur.right
+			}
+		}
+	}
+	return inList
+}
+
+// PostOrderTraversal Morris实现后序遍历
+func (avlTree *AVLTree) PostOrderTraversal() []int {
+	postList := make([]int, 0)
+	cur := avlTree.root
+	for cur != nil {
+		if cur.left == nil {
+			cur = cur.right
+		} else {
+			pre := cur.left
+			for pre.right != nil && pre.right != cur {
+				pre = pre.right
+			}
+			if pre.right == nil {
+				pre.right = cur
+				cur = cur.left
+			} else {
+				pre.right = nil
+				postList = append(postList, reverseTraversal(cur.left)...)
+				cur = cur.right
+			}
+		}
+	}
+	postList = append(postList, reverseTraversal(avlTree.root)...)
+	return postList
+}
+
+func reverseTraversal(node *AVLTreeNode) []int {
+	r := make([]int, 0)
+	for node != nil {
+		r = append([]int{node.val}, r...)
+		node = node.right
+	}
+	return r
+}
+
 func delAVLTreeNode(node *AVLTreeNode, val int) *AVLTreeNode {
 	if node == nil {
 		return nil
