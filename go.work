@@ -1,6 +1,7 @@
 go 1.22.1
 
 use (
+	./algs/charsequence/kmp
 	./algs/graph/bellman-ford
 	./algs/graph/dijkstra
 	./algs/graph/kruskal
